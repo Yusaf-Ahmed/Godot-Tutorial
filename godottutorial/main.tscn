@@ -2,5 +2,12 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_wahfj"]
 
-[node name="Main" type="Node"]
+[node name="main" type="Node2D"]
 script = ExtResource("1_wahfj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -74.0
+offset_top = -13.0
+offset_right = 88.0
+offset_bottom = 10.0
+text = "This is my LABEL - YA"
