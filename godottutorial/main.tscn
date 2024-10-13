@@ -6,8 +6,8 @@
 script = ExtResource("1_wahfj")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -74.0
-offset_top = -13.0
-offset_right = 88.0
-offset_bottom = 10.0
+offset_left = 502.0
+offset_top = 240.0
+offset_right = 664.0
+offset_bottom = 263.0
 text = "This is my LABEL - YA"
