@@ -5,13 +5,14 @@ var Health = 300
 func _input(event):
 	if event.is_action_pressed("Damage") and Health > 0:
 		var roll = randi_range(1, 20)
+		var result = add(randi_range(1, 100), randi_range(1, 800))
 		Health -= 10
 		print(Health)
+		print("Random Addition: " + str(result))
 	# Health System
 		if Health <= 0:
 			Health = 0
-			var result = add(2, 800)
-			print("DEAD ", result)	
+			print("DEAD ")	
 		elif Health < 50:
 			print("INJURED!")	
 		else:
