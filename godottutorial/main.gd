@@ -2,6 +2,23 @@ extends Node
 
 var Health = 300
 # Called when the node enters the scene tree for the first time.
+func _ready():
+	var players = {
+		"Boss": {"Level": 100, "Health": 1000},
+		"Crook": {"Level": 1, "Health": 100},
+	}
+	
+	 #Access the Boss's Level and Health
+	print(players["Boss"]["Level"])  # Output: 100
+	print(players["Boss"]["Health"])  # Output: 1000
+	
+	# Access the Crook's Level and Health
+	print(players["Crook"]["Health"])  # Output: 100
+	
+	# Modify the Boss's Health
+	players["Boss"]["Health"] -= 200
+	print(players["Boss"]["Health"])  # Output: 800
+	
 func _input(event):
 	if event.is_action_pressed("Damage") and Health > 0:
 		var roll = randi_range(1, 20)
