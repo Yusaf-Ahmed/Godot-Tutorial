@@ -22,7 +22,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Damage") and Health > 0:
 		var roll = randi_range(1, 20)
-		var result = add(randi_range(1, 100), randi_range(1, 800))
+		var result = add(randi_range(1, 800), randi_range(1, 800))
 		Health -= 10
 		print(Health)
 		print("Random Addition: " + str(result))
