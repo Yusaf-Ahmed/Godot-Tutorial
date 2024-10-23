@@ -33,7 +33,7 @@ func _input(event):
 		elif Health < 50:
 			print("INJURED!")	
 		else:
-			print("HEALTHY!")	
+			print("HEALTHY!!!!")	
 		
 	# Random Dice System
 		if roll == 10:
