@@ -1,7 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4ueno7denb23"]
+[gd_scene load_steps=9 format=3 uid="uid://b4ueno7denb23"]
 
 [ext_resource type="PackedScene" uid="uid://djnryf4euw3we" path="res://Scenes/player.tscn" id="1_posey"]
 [ext_resource type="Texture2D" uid="uid://bwwg3nndfbs2l" path="res://Assets/sprites/world_tileset.png" id="2_jkscc"]
+[ext_resource type="PackedScene" uid="uid://di8onyyqykt23" path="res://Scenes/platforms.tscn" id="3_1a5oi"]
+
+[sub_resource type="Animation" id="Animation_xtsqe"]
+resource_name = "UpDown"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(135, 327), Vector2(135, 230)]
+}
+
+[sub_resource type="Animation" id="Animation_7cis2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(135, 327)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73diw"]
+_data = {
+"RESET": SubResource("Animation_7cis2"),
+"UpDown": SubResource("Animation_xtsqe")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ua40"]
 texture = ExtResource("2_jkscc")
@@ -171,14 +210,24 @@ sources/0 = SubResource("TileSetAtlasSource_0ua40")
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_posey")]
-position = Vector2(89, 250)
+[node name="Platforms" parent="." instance=ExtResource("3_1a5oi")]
+position = Vector2(135, 327)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(89, 254)
-zoom = Vector2(4, 4)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms"]
+libraries = {
+"": SubResource("AnimationLibrary_73diw")
+}
+autoplay = "UpDown"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qv6f5")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114117, 0, 0, 1114118, 0, 0, 1179652, 0, 0, 917514, 0, 0, 917515, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 786447, 0, 0, 786448, 0, 0, 1179653, 0, 1, 1179654, 0, 1, 1245190, 0, 1, 1310726, 0, 1, 1376262, 65536, 0, 1441798, 65536, 0, 1376261, 65536, 0, 1441797, 65536, 0, 1441796, 65536, 0, 1376260, 65536, 0, 1310724, 0, 1, 1310725, 0, 1, 1245189, 0, 1, 1245188, 0, 1, 983050, 0, 1, 1048586, 65536, 1, 983051, 0, 1, 1048587, 0, 1, 917516, 0, 1, 983052, 0, 1, 917517, 65536, 1, 983053, 65536, 0, 917518, 0, 1, 983054, 0, 1, 851983, 0, 1, 917519, 0, 1, 851984, 65536, 0, 917520, 0, 1, 1310730, 0, 1, 1376266, 65536, 1, 1441802, 65536, 1, 1310731, 0, 1, 1376267, 65536, 0, 1441803, 65536, 0, 1245196, 0, 1, 1310732, 65536, 1, 1245197, 0, 1, 1310733, 65536, 0, 1245198, 0, 1, 1310734, 65536, 1, 1179663, 0, 1, 1245199, 65536, 1, 1179664, 0, 1, 1245200, 65536, 0, 1507338, 65536, 0, 1507339, 65536, 1, 1376268, 65536, 1, 1376269, 65536, 0, 1376270, 65536, 1, 1310735, 65536, 0, 1310736, 65536, 1, 786452, 262144, 0, 786453, 262144, 0, 851990, 262144, 0, 851991, 262144, 0, 851992, 262144, 0, 917529, 262144, 0, 917530, 262144, 0, 851988, 262144, 1, 851989, 262144, 1, 917525, 262144, 1, 917524, 327680, 1, 917526, 327680, 0, 983062, 262144, 1, 917527, 262144, 1, 983063, 262144, 1, 983064, 327680, 0, 917528, 262144, 1, 983065, 262144, 1, 983066, 262144, 1, 1048602, 327680, 1, 1048601, 262144, 1, 1179668, 262144, 1, 1179669, 262144, 1, 1245206, 262144, 1, 1245207, 262144, 1, 1245208, 262144, 1, 1310745, 262144, 1, 1310746, 262144, 1, 1245204, 327680, 1, 1310742, 327680, 1, 1310744, 327680, 1, 1376282, 327680, 0, 1310741, 327680, 1, 1376279, 327680, 1, 1376281, 327680, 1, 1245205, 327680, 0, 1310740, 327680, 0, 1310743, 327680, 0, 1376278, 327680, 0, 1376280, 327680, 0, 1441817, 327680, 0, 1441818, 327680, 1, 1507354, 327680, 1, 1507353, 327680, 1, 1179665, 589824, 0, 1179666, 655360, 0, 1179667, 720896, 0, 786449, 589824, 0, 786450, 655360, 0, 786451, 720896, 0, 1245214, 262144, 1, 1310750, 262144, 1, 1245215, 262144, 1, 1310751, 262144, 1, 1245216, 262144, 1, 1310752, 262144, 1, 1179678, 262144, 1, 1179679, 262144, 1, 1376286, 327680, 1, 1441822, 327680, 1, 1376287, 327680, 1, 1441823, 327680, 1, 1376288, 327680, 1, 1441824, 327680, 1, 1179680, 262144, 0, 1114142, 262144, 0, 1114143, 262144, 0, 720907, 131072, 4, 851979, 196608, 8, 786445, 196608, 8, 720909, 196608, 8, 655373, 196608, 8, 589837, 131072, 4, 786455, 327680, 5, 851993, 327680, 5, 786457, 327680, 4, 720919, 327680, 4, 655383, 327680, 4, 589847, 327680, 3, 720921, 327680, 3, 720917, 524288, 6, 720916, 458752, 6, 720911, 524288, 8, 720912, 458752, 8, 1114116, 0, 7, 1114144, 65536, 7)
+
+[node name="Player" parent="." instance=ExtResource("1_posey")]
+position = Vector2(89, 250)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 4)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
