@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4ueno7denb23"]
+[gd_scene load_steps=3 format=3 uid="uid://b4ueno7denb23"]
 
 [ext_resource type="PackedScene" uid="uid://djnryf4euw3we" path="res://Scenes/player.tscn" id="1_posey"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhs83"]
+distance = -41.0
 
 [node name="Game" type="Node2D"]
 
@@ -10,3 +13,9 @@ position = Vector2(89, 250)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(89, 254)
 zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(96, 261)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_xhs83")
