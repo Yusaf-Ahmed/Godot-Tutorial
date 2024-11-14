@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
-
 const SPEED = 120.0
 const JUMP_VELOCITY = -330.0
 
 #this better work!!!
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
