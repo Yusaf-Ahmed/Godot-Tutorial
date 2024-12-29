@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://doc6llntnx0yf"]
+
+[ext_resource type="PackedScene" uid="uid://djnryf4euw3we" path="res://Scenes/player.tscn" id="1_ohp7v"]
+[ext_resource type="Texture2D" uid="uid://blave4uw6hei3" path="res://Assets/sprites/slime_purple.png" id="2_a0rkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln1hs"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lfdq"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv8db"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jpx5"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orplc"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jsl"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5l0v"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j03ay"]
+atlas = ExtResource("2_a0rkg")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hw46"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln1hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lfdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv8db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jpx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orplc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7jsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5l0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j03ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv8db")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="ColorTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ohp7v")]
+position = Vector2(-46, 2)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_2hw46")
+frame_progress = 0.99926
