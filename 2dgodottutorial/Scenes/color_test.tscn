@@ -73,8 +73,28 @@ animations = [{
 [node name="ColorTest" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ohp7v")]
+texture_filter = 1
 position = Vector2(-46, 2)
+scale = Vector2(2, 2)
+script = null
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_2hw46")
-frame_progress = 0.99926
+frame_progress = 0.832242
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+offset_left = -163.0
+offset_top = -1.0
+offset_right = -60.0
+offset_bottom = 15.0
+
+[node name="Label" type="Label" parent="ColorPickerButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -11.0
+offset_right = 98.0
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+text = "Inner Colour"
+visible_ratio = -0.0833333
