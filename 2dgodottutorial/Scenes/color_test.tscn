@@ -1,7 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://doc6llntnx0yf"]
+[gd_scene load_steps=14 format=3 uid="uid://doc6llntnx0yf"]
 
-[ext_resource type="PackedScene" uid="uid://djnryf4euw3we" path="res://Scenes/player.tscn" id="1_ohp7v"]
+[ext_resource type="Shader" path="res://Scenes/color_test.gdshader" id="1_d5o1q"]
 [ext_resource type="Texture2D" uid="uid://blave4uw6hei3" path="res://Assets/sprites/slime_purple.png" id="2_a0rkg"]
+[ext_resource type="Script" path="res://Scenes/animated_sprite_2d_2.gd" id="3_s1lpw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0i4lt"]
+shader = ExtResource("1_d5o1q")
+shader_parameter/OLDCOLOR1 = Color(0.901961, 0.372549, 0.411765, 1)
+shader_parameter/OLDCOLOR2 = Color(0.717647, 0.239216, 0.580392, 1)
+shader_parameter/OLDCOLOR3 = Color(0.435294, 0.172549, 0.466667, 1)
+shader_parameter/NEWCOLOR1 = null
+shader_parameter/NEWCOLOR2 = null
+shader_parameter/NEWCOLOR3 = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ln1hs"]
 atlas = ExtResource("2_a0rkg")
@@ -71,30 +81,15 @@ animations = [{
 }]
 
 [node name="ColorTest" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_ohp7v")]
 texture_filter = 1
+material = SubResource("ShaderMaterial_0i4lt")
+script = ExtResource("3_s1lpw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(-46, 2)
 scale = Vector2(2, 2)
-script = null
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_2hw46")
-frame_progress = 0.832242
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
-offset_left = -163.0
-offset_top = -1.0
-offset_right = -60.0
-offset_bottom = 15.0
-
-[node name="Label" type="Label" parent="ColorPickerButton"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -11.0
-offset_right = 98.0
-offset_bottom = 12.0
-scale = Vector2(0.5, 0.5)
-text = "Inner Colour"
-visible_ratio = -0.0833333
+autoplay = "default"
+frame = 5
+frame_progress = 0.554292

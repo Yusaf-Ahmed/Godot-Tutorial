@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4ueno7denb23"]
+[gd_scene load_steps=19 format=3 uid="uid://b4ueno7denb23"]
 
 [ext_resource type="PackedScene" uid="uid://djnryf4euw3we" path="res://Scenes/player.tscn" id="1_posey"]
 [ext_resource type="Texture2D" uid="uid://bwwg3nndfbs2l" path="res://Assets/sprites/world_tileset.png" id="2_jkscc"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cfybg8k0606sn" path="res://Scenes/coin.tscn" id="4_q5hq4"]
 [ext_resource type="PackedScene" uid="uid://bu7bwie35mh6v" path="res://Scenes/killzones.tscn" id="5_j8twv"]
 [ext_resource type="PackedScene" uid="uid://ligko5gk2c5t" path="res://Scenes/slime.tscn" id="6_e851i"]
+[ext_resource type="PackedScene" uid="uid://doc6llntnx0yf" path="res://Scenes/color_test.tscn" id="7_e150o"]
+[ext_resource type="Shader" path="res://Scenes/color_test.gdshader" id="8_6nqwk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ua40"]
 texture = ExtResource("2_jkscc")
@@ -239,6 +241,16 @@ _data = {
 "Slow_UpDown": SubResource("Animation_00xc1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kt4bb"]
+resource_local_to_scene = true
+shader = ExtResource("8_6nqwk")
+shader_parameter/OLDCOLOR1 = Color(0.901961, 0.372549, 0.411765, 1)
+shader_parameter/OLDCOLOR2 = Color(0.717647, 0.239216, 0.580392, 1)
+shader_parameter/OLDCOLOR3 = Color(0.435294, 0.172549, 0.466667, 1)
+shader_parameter/NEWCOLOR1 = null
+shader_parameter/NEWCOLOR2 = null
+shader_parameter/NEWCOLOR3 = null
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -298,3 +310,63 @@ position = Vector2(296, 243)
 
 [node name="Slime" parent="." instance=ExtResource("6_e851i")]
 position = Vector2(160, 90)
+
+[node name="ColorTest" parent="." instance=ExtResource("7_e150o")]
+process_mode = 3
+material = SubResource("ShaderMaterial_kt4bb")
+position = Vector2(171, 176)
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ColorTest"]
+offset_left = -169.0
+offset_top = -49.0
+offset_right = -66.0
+offset_bottom = -33.0
+button_pressed = true
+keep_pressed_outside = true
+
+[node name="Label" type="Label" parent="ColorTest/ColorPickerButton"]
+custom_minimum_size = Vector2(0.005, 0.005)
+layout_mode = 0
+offset_left = 2.0
+offset_top = -18.0
+offset_right = 219.0
+offset_bottom = 174.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 125
+text = "Inner Colour"
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="ColorTest"]
+offset_left = -169.0
+offset_top = -10.0
+offset_right = -66.0
+offset_bottom = 6.0
+
+[node name="Label" type="Label" parent="ColorTest/ColorPickerButton2"]
+custom_minimum_size = Vector2(0.005, 0.005)
+layout_mode = 0
+offset_left = 2.0
+offset_top = -18.0
+offset_right = 219.0
+offset_bottom = 174.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 125
+text = "Outer Colour
+"
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="ColorTest"]
+offset_left = -169.0
+offset_top = 26.0
+offset_right = -66.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="ColorTest/ColorPickerButton3"]
+custom_minimum_size = Vector2(0.005, 0.005)
+layout_mode = 0
+offset_left = 2.0
+offset_top = -18.0
+offset_right = 219.0
+offset_bottom = 174.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 125
+text = "Bottom Colour
+"
